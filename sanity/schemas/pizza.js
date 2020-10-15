@@ -1,4 +1,5 @@
 import { MdLocalPizza as icon } from 'react-icons/md';
+import PrinceInput from '../components/PriceInput';
 
 export default {
   // Computer Name
@@ -36,9 +37,9 @@ export default {
       title: 'Price',
       type: 'number',
       description: 'Price of the pizza in cents',
+      inputComponent: PrinceInput,
       options: {
         validation: (Rule) => Rule.min(1000),
-        // TODO: Add custom input component
       },
     },
     {
