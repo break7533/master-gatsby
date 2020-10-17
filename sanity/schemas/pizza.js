@@ -62,13 +62,30 @@ export default {
       topping1: 'toppings.1.name',
       topping2: 'toppings.2.name',
       topping3: 'toppings.3.name',
+      topping0Veg: 'toppings.0.vegetarian',
+      topping1Veg: 'toppings.1.vegetarian',
+      topping2Veg: 'toppings.2.vegetarian',
+      topping3Veg: 'toppings.3.vegetarian',
     },
-    prepare: ({ title, media, ...toppings }) => {
+    prepare: ({
+      title,
+      media,
+      topping0,
+      topping1,
+      topping2,
+      topping3,
+      ...vegToppings
+    }) => {
+      const toppings = { topping0, topping1, topping2, topping3 };
       // 1. Filter undefined toppings out
       const tops = Object.values(toppings).filter(Boolean);
-      // 2. return the preview object for the pizza
+
+      // 2. Find if it is a veggie pizza
+      const isVeggie = Object.values(vegToppings).every(Boolean);
+
+      // 3. return the preview object for the pizza
       return {
-        title,
+        title: `${title} ${isVeggie ? '🌱' : ''}`,
         media,
         subtitle: tops.join(', '),
       };
