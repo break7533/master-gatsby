@@ -2,16 +2,23 @@ import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
+import SEO from '../components/SEO';
 
 export default function SlicemasterPage({ data: { slicemaster } }) {
   return (
-    <div className="center">
-      <Img fluid={slicemaster.image.asset.fluid} />
-      <h2>
-        <span className="mark">{slicemaster.name}</span>
-      </h2>
-      <p>{slicemaster.description}</p>
-    </div>
+    <>
+      <SEO
+        title={slicemaster.name}
+        image={slicemaster.image?.asset?.fluid?.src}
+      />
+      <div className="center">
+        <Img fluid={slicemaster.image.asset.fluid} />
+        <h2>
+          <span className="mark">{slicemaster.name}</span>
+        </h2>
+        <p>{slicemaster.description}</p>
+      </div>
+    </>
   );
 }
 

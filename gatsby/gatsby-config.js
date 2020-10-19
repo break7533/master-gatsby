@@ -7,9 +7,11 @@ export default {
     title: `Slicks Slices`,
     siteURL: `https:gatsby.pizza`,
     description: `The best pizza place in Porto`,
+    twitter: '@slicksSlices',
   },
   plugins: [
     'gatsby-plugin-styled-components',
+    'gatsby-plugin-react-helmet',
     {
       // name of the plugin being added
       resolve: 'gatsby-source-sanity',
