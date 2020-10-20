@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function usePizza({ pizza, inputs }) {
+export default function usePizza({ pizzas, inputs }) {
   // 1. Create state to hold order
   const [order, setOrder] = useState([]);
 
