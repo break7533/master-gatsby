@@ -13,7 +13,7 @@ export default function PizzaOrder({ order, pizzas, removeFromOrder }) {
         );
 
         return (
-          <MenuItemStyles key={singleOrder.id}>
+          <MenuItemStyles key={`${singleOrder.id}-${index}`}>
             <Img fluid={pizza.image.asset.fluid} />
             <h2>{pizza.name}</h2>
             <p>
