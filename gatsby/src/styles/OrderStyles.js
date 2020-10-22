@@ -22,6 +22,10 @@ const OrderStyles = styled.form`
       grid-column: span 2;
     }
   }
+
+  .mapleSyrup {
+    display: none;
+  }
 `;
 
 export default OrderStyles;
