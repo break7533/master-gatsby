@@ -33,7 +33,14 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+function wait(ms = 0) {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, ms);
+  });
+}
+
 exports.handler = async (event, context) => {
+  // await wait(5000);
   const body = JSON.parse(event.body);
   // Validate the data coming in is correct
   const requiredFields = ['email', 'name', 'order'];
@@ -47,6 +54,16 @@ exports.handler = async (event, context) => {
         }),
       };
     }
+  }
+
+  // make sure they have items in the order
+  if (!body.order.length) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({
+        message: `The order is empty, please add some tasty food`,
+      }),
+    };
   }
 
   // send the email
